@@ -1,6 +1,7 @@
 package com.example.carrent.controller.servlets;
 
 import java.io.*;
+import java.sql.*;
 import java.util.HashMap;
 
 import com.example.carrent.controller.ModelFactoryController;
@@ -33,5 +34,24 @@ public class SvClient extends HttpServlet {
             getServletContext().getRequestDispatcher("/register.jsp").forward(request,response);
             session.setAttribute("errores",null);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String url="jdbc:mysql://localhost/carrent";
+        String nickname="root";
+        try {
+            Connection connection= DriverManager.getConnection("jdbc:mysql://localhost/carrent","root","");
+            Statement statement=connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT * FROM carrent");
+            while (rs.next()){
+                System.out.println(rs.getString("nickname"));
+            }
+            connection.commit();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
