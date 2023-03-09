@@ -1,11 +1,13 @@
 package com.example.carrent.controller.servlets;
 
 import java.io.*;
+import java.util.HashMap;
 
 import com.example.carrent.controller.ModelFactoryController;
 import com.example.carrent.persistence.PersistenceClient;
 import com.example.carrent.service.Impl.CarRent;
 import com.example.carrent.service.Impl.ClientServiceImp;
+import com.example.carrent.utilities.GeneratorAlerts;
 import com.example.carrent.validation.CreateValidation;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -24,7 +26,12 @@ public class SvClient extends HttpServlet {
             mfc.createClient(nickname,password);
             PersistenceClient.saveClient(mfc.getCarRent().getClientServiceImp().getListClients());
             response.sendRedirect("index.jsp");
+        }else{
+            HashMap<String,String> errores=new HashMap<>(GeneratorAlerts.generateMessageRegister(nickname, password, confirmPassword));
+            HttpSession session = request.getSession();
+            session.setAttribute("errores",errores);
+            getServletContext().getRequestDispatcher("/register.jsp").forward(request,response);
+            session.setAttribute("errores",null);
         }
-
     }
 }

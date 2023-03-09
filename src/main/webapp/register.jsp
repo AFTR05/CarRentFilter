@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: AFTR
   Date: 03/03/2023
@@ -14,20 +14,31 @@
    <title>Register</title>
 </head>
 <body >
+        <% HashMap<String,String> errores=(HashMap<String, String>) request.getSession().getAttribute("errores");
+        if (errores!=null&&errores.size()>0){
+            String contenido="";
+        %>
+        <h3>Whoops!</h3>
+        <%
+            for(String error:errores.values()){
+        %>
+                <p>* <%=error%></p>
+            <%}%>
+        <%}%>
         <h1 id="log-title">Registro</h1>
         <form action="/register-client" method="post">
             <div id="information-space">
             <div>
                 <h6>Nickname</h6>
-                <input type="text" name="nickname" />
+                <input type="text" name="nickname" value="${param.nickname}"/>
             </div>
             <div>
                 <h6>Password</h6>
-                <input type="password" name="password" />
+                <input type="password" name="password" value="${param.password}" />
             </div>
             <div>
                 <h6>Confirm Password</h6>
-                <input type="password" name="confirmpassword" />
+                <input type="password" name="confirmpassword" value="${param.confirmpassword}"  />
             </div>
 
             <button type="submit" value="register" id="log-button" class="btn btn-dark">Send</button>

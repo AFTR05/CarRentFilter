@@ -12,7 +12,6 @@ public class NullValidation {
             try {
                 throw new InputException("Information is missing");
             }catch (InputException ie){
-                JOptionPane.showMessageDialog(null,ie.getMessage()+"Lack of information");
                 return false;
             }
         }
@@ -25,7 +24,6 @@ public class NullValidation {
             try {
                 throw new InputException("Information is missing");
             }catch (InputException ie){
-                JOptionPane.showMessageDialog(null,ie.getMessage()+"Lack of information");
                 return false;
             }
         }
