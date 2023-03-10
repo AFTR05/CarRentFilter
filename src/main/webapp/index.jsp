@@ -38,9 +38,6 @@
             <button type="submit" name="register-client" class="btn btn-outline-primary" id="log-button">Log in</button>
     </form>
     <a href="register.jsp">Register</a>
-        <form action="/register-client" method="get">
-            <input type="submit" value="list" />
-        </form>
     </div>
 </body>
 </html>
