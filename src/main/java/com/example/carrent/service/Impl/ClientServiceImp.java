@@ -2,6 +2,7 @@ package com.example.carrent.service.Impl;
 
 import com.example.carrent.model.Client;
 import com.example.carrent.service.ClientService;
+import com.example.carrent.utilities.ConnectionData;
 
 import java.util.HashSet;
 
@@ -28,6 +29,8 @@ public class ClientServiceImp implements ClientService {
 
     @Override
     public void createClient(String name, String password) {
-        listClients.add(new Client(name,password));
+        Client client=new Client(name,password);
+        listClients.add(client);
+        ConnectionData.addClient(client);
     }
 }

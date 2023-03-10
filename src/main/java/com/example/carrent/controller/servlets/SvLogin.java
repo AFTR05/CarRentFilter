@@ -2,6 +2,7 @@ package com.example.carrent.controller.servlets;
 
 import com.example.carrent.controller.ModelFactoryController;
 import com.example.carrent.persistence.PersistenceClient;
+import com.example.carrent.utilities.ConnectionData;
 import com.example.carrent.utilities.GeneratorAlerts;
 import com.example.carrent.utilities.LoginAction;
 import com.example.carrent.validation.NullValidation;
@@ -21,7 +22,7 @@ public class SvLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        mfc.getCarRent().getClientServiceImp().setListClients(PersistenceClient.chargeClient());
+        mfc.getCarRent().getClientServiceImp().setListClients(ConnectionData.chargeDataSQL());
         String nickname=request.getParameter("nickname");
         String password=request.getParameter("password");
         HashMap<String,String> errores=new HashMap<>(GeneratorAlerts.generateMessageLogin(nickname, password));
