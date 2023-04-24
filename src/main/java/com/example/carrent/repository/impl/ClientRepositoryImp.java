@@ -27,7 +27,7 @@ public class ClientRepositoryImp implements Repository {
     public HashSet<Client> list() {
         HashSet<Client> clients = new HashSet<>();
         try (Statement statement=getConnection().createStatement();
-             ResultSet resultSet=statement.executeQuery("SELECT * FROM products")
+             ResultSet resultSet=statement.executeQuery("SELECT * FROM client")
         ){
             while (resultSet.next()) {
                 Client client = createClient(resultSet);

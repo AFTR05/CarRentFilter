@@ -29,11 +29,11 @@
     <form action="/login" method="post">
             <div>
                 <h6>Nickname</h6>
-                <input type="text" name="nickname" value="${param.nickname}"/>
+                <input type="text" name="nickname" value="${param.nickname}" id="nickname"/>
             </div>
             <div>
                 <h6>Password</h6>
-                <input type="password" name="password" value="${param.password}"/>
+                <input type="password" name="password" value="${param.password}" id="password"/>
             </div>
             <button type="submit" name="register-client" class="btn btn-outline-primary" id="log-button">Log in</button>
     </form>

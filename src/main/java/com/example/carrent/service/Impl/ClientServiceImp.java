@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ClientServiceImp implements ClientService {
     private HashSet<Client> listClients;
-    private ClientRepositoryImp cri;
+    private ClientRepositoryImp cri=new ClientRepositoryImp();
 
     private final CarRent carRent;
 

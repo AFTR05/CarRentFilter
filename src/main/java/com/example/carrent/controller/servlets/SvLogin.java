@@ -27,6 +27,9 @@ public class SvLogin extends HttpServlet {
         HashMap<String,String> errores=new HashMap<>(GeneratorAlerts.generateMessageLogin(nickname, password));
         if(NullValidation.nullLogin(nickname,password)){
             if (LoginAction.DefaultLogin(nickname,password)=="client"){
+                HttpSession session = request.getSession();
+                session.setAttribute("nickname", nickname);
+                session.setAttribute("password", password);
                 response.sendRedirect("loan.jsp");
             }else {
                 HttpSession session = request.getSession();
