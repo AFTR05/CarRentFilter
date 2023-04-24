@@ -1,13 +1,16 @@
 package com.example.carrent.service.Impl;
 
 import com.example.carrent.model.Client;
+import com.example.carrent.repository.impl.ClientRepositoryImp;
 import com.example.carrent.service.ClientService;
-import com.example.carrent.utilities.ConnectionData;
 
+import java.sql.Connection;
 import java.util.HashSet;
+import java.util.List;
 
 public class ClientServiceImp implements ClientService {
     private HashSet<Client> listClients;
+    private ClientRepositoryImp cri;
 
     private final CarRent carRent;
 
@@ -31,6 +34,26 @@ public class ClientServiceImp implements ClientService {
     public void createClient(String name, String password) {
         Client client=new Client(name,password);
         listClients.add(client);
-        ConnectionData.addClient(client);
+        cri.save(client);
     }
+
+    @Override
+    public HashSet<Client> listar() {
+        return cri.list();
+    }
+    @Override
+    public void update(Long id, Client client){
+        cri.update(id, client);
+    }
+    @Override
+    public Client getById(Long id) {
+        return cri.byId(id);
+    }
+    @Override
+    public void delete(Long id) {
+        cri.delete(id);
+    }
+
+
+
 }

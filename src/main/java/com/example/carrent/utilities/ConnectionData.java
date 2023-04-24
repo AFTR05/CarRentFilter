@@ -21,7 +21,7 @@ public class ConnectionData {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM client");
             while (rs.next()){
-                clients.add(new Client(rs.getString("nickname"),rs.getString("password")));
+                clients.add(new Client(rs.getString("nickname"),rs.getString("password"),rs.getInt("id")));
                 System.out.println(rs.getString("nickname") + " añadido con exito al array");
             }
             statement.close();

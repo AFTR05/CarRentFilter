@@ -1,9 +1,12 @@
 package com.example.carrent.model;
 
+import jakarta.inject.Named;
+
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-public class Loan {
+public class Loan implements Serializable {
     private LocalDateTime beginLoan;
     private Client client;
     private Vehicle vehicle;

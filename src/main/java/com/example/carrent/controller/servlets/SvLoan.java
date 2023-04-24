@@ -1,7 +1,6 @@
 package com.example.carrent.controller.servlets;
 
 import com.example.carrent.controller.ModelFactoryController;
-import com.example.carrent.persistence.PersistenceClient;
 import com.example.carrent.service.Impl.CarRent;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

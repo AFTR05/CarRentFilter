@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.HashMap;
 
 import com.example.carrent.controller.ModelFactoryController;
-import com.example.carrent.persistence.PersistenceClient;
+import com.example.carrent.repository.impl.ClientRepositoryImp;
 import com.example.carrent.service.Impl.CarRent;
 import com.example.carrent.service.Impl.ClientServiceImp;
 import com.example.carrent.utilities.ConnectionData;
@@ -22,7 +22,7 @@ public class SvClient extends HttpServlet {
     private ModelFactoryController mfc=ModelFactoryController.getInstance();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        mfc.getCarRent().getClientServiceImp().setListClients(ConnectionData.chargeDataSQL());
+        mfc.getCarRent().getClientServiceImp().setListClients(mfc.getCarRent().getClientRepositoryImp().list());
         String nickname=request.getParameter("nickname");
         String password=request.getParameter("password");
         String confirmPassword=request.getParameter("confirmpassword");

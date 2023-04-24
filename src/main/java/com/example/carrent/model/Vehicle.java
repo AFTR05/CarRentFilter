@@ -1,16 +1,21 @@
 package com.example.carrent.model;
 
-import java.lang.reflect.Type;
+import jakarta.inject.Named;
 
-public class Vehicle {
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.lang.reflect.Type;
+@SessionScoped
+@Named
+public class Vehicle implements Serializable {
     private String name;
     private TypeVehicle type;
-    private static Integer id;
+    private Integer id;
 
-    public Vehicle(String name, TypeVehicle type) {
+    public Vehicle(String name, TypeVehicle type,Integer id) {
         this.name = name;
         this.type = type;
-        id++;
+        this.id = id;
     }
     public Vehicle(){
 
@@ -30,10 +35,6 @@ public class Vehicle {
 
     public void setType(TypeVehicle type) {
         this.type = type;
-    }
-
-    public void setId(Integer id) {
-        Vehicle.id = id;
     }
 
     public Integer getId() {
